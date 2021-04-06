@@ -1,16 +1,13 @@
-# night_kanban
+# Night Kanban
 
-A new Flutter project.
+## O Projeto
+- Um app para gestão de projetos, baseado em boards de Kanban.
+- [API](https://github.com/viniciusamelio/kanban-api)
 
-## Getting Started
+### Detalhes
+- Gestão de estado com RXNotifier
+- Desenvolvimento orientado a interfaces (Adapter Pattern)
+- Estruturado com Bloc Pattern
+- Repository Pattern
+- Data Transfer Objects
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
