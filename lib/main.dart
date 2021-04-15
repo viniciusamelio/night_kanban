@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive/hive.dart';
+import 'package:night_kanban/modules/boards/pages/board-add-page.dart';
 import 'package:night_kanban/modules/boards/pages/board-page.dart';
 import 'package:night_kanban/modules/home/pages/home-page.dart';
 import 'package:night_kanban/shared/entities/user.dart';
@@ -77,7 +78,8 @@ class MyApp extends StatelessWidget {
           '/': (context) => LoginPage(),
           LoginPage.route: (context) => LoginPage(),
           HomePage.route: (context) => HomePage(),
-          BoardPage.route: (context) => BoardPage()
+          BoardPage.route: (context) => BoardPage(),
+          BoardAddPage.route: (context) => BoardAddPage()
         },
       ),
     );

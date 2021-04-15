@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:night_kanban/modules/boards/controller/boards-controller.dart';
+import 'package:night_kanban/modules/boards/pages/board-add-page.dart';
 import 'package:night_kanban/modules/boards/repositories/board-repository.dart';
 import 'package:night_kanban/shared/entities/user.dart';
 import 'package:night_kanban/shared/services/http_client/custom-dio.dart';
+import 'package:night_kanban/shared/services/navigator/navigator.dart';
 import 'package:night_kanban/shared/styles/colors.dart';
 import 'package:night_kanban/shared/widgets/custom-card.dart';
 import 'package:night_kanban/shared/widgets/empty-state.dart';
@@ -54,7 +56,9 @@ class _BoardPageState extends State<BoardPage> {
             size: 30,
             color: Colors.white,
           ),
-          onPressed: () {},
+          onPressed: () => pushNamed(
+            routeName: BoardAddPage.route,
+          ),
         ),
         body: Center(
           child: RxBuilder(
