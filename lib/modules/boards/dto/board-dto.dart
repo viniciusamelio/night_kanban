@@ -21,7 +21,7 @@ class BoardDto {
       'title': title,
       'description': description,
       'color': color,
-      'userId': userId,
+      'user_id': userId,
     };
   }
 
@@ -31,7 +31,7 @@ class BoardDto {
       title: map['title'],
       description: map['description'],
       color: map['color'],
-      userId: map['userId'],
+      userId: map['user_id'],
     );
   }
 

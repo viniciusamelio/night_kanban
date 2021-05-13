@@ -10,6 +10,11 @@ pop() {
   return navigationKey.currentState.pop();
 }
 
+popUntillNamed({@required String routeName}) {
+  return navigationKey.currentState
+      .popUntil((route) => route.settings.name == routeName);
+}
+
 pushNamedAndRemoveUntill(
     {@required String routeName, Route<dynamic> predicate}) {
   return navigationKey.currentState

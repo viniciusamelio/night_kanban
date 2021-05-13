@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:night_kanban/shared/services/navigator/navigator.dart';
+import 'package:night_kanban/shared/widgets/gradient-button.dart';
 
 class Layout extends StatelessWidget {
   final Widget body;
   final List<Widget> actions;
   final String pageTitle;
   final Widget floatingActionButton;
+  final Widget bottomButton;
   const Layout(
       {Key key,
       @required this.body,
       this.floatingActionButton,
       this.pageTitle,
-      this.actions})
+      this.actions,
+      this.bottomButton})
       : super(key: key);
 
   @override
@@ -57,7 +60,13 @@ class Layout extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              Expanded(child: body)
+              Expanded(child: body),
+              bottomButton != null
+                  ? SizedBox(
+                      height: 60,
+                      child: bottomButton,
+                    )
+                  : Container()
             ],
           ),
         ),

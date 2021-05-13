@@ -25,7 +25,10 @@ class BoardRepository implements InterfaceBoardRepository {
 
   Future<DefaultSuccessDto> create(BoardDto board) async {
     try {
-      final result = await dio.post('/board');
+      final result = await dio.post(
+        '/board',
+        data: board.toJson(),
+      );
       return DefaultSuccessDto(
         result.data['message'],
       );

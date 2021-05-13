@@ -8,6 +8,7 @@ import 'package:night_kanban/shared/services/navigator/navigator.dart';
 import 'package:night_kanban/shared/styles/colors.dart';
 import 'package:night_kanban/shared/widgets/custom-card.dart';
 import 'package:night_kanban/shared/widgets/empty-state.dart';
+import 'package:night_kanban/shared/widgets/gradient-button.dart';
 import 'package:night_kanban/shared/widgets/layout.dart';
 import 'package:night_kanban/shared/widgets/request-error-widget.dart';
 import 'package:provider/provider.dart';
@@ -46,52 +47,51 @@ class _BoardPageState extends State<BoardPage> {
   Widget build(BuildContext context) {
     return Layout(
         pageTitle: "Boards",
-        floatingActionButton: FloatingActionButton(
-          backgroundColor: darkPurple,
-          elevation: 1,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-          child: Icon(
-            Icons.add_chart,
-            size: 30,
-            color: Colors.white,
-          ),
-          onPressed: () => pushNamed(
-            routeName: BoardAddPage.route,
-          ),
+        bottomButton: GradientButton(
+          label: 'Adicionar',
+          onPressed: () {
+            pushNamed(
+              routeName: BoardAddPage.route,
+            );
+            ;
+          },
         ),
-        body: Center(
-          child: RxBuilder(
-            builder: (_) {
-              if (_boardsController.listRequest.status ==
-                  FutureStatus.pending) {
-                return Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
+        body: RxBuilder(
+          builder: (_) {
+            if (_boardsController.listRequest.status == FutureStatus.pending) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
 
-              if (_boardsController.listRequest.status ==
-                  FutureStatus.rejected) {
-                return RequestErrorFeedback();
-              }
+            if (_boardsController.listRequest.status == FutureStatus.rejected) {
+              return Center(
+                child: RequestErrorFeedback(),
+              );
+            }
 
-              if (_boardsController.listRequest.data.length > 0) {
-                return ListView.builder(
-                  shrinkWrap: true,
-                  itemCount: _boardsController.listRequest.data.length,
-                  itemBuilder: (context, index) {
-                    final item = _boardsController.listRequest.data[index];
-                    return CustomCard(
-                        title: item.title, description: item.description);
-                  },
-                );
-              }
+            if (_boardsController.listRequest.data.length > 0) {
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: _boardsController.listRequest.data.length,
+                itemBuilder: (context, index) {
+                  final item = _boardsController.listRequest.data[index];
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 6.0),
+                    child: CustomCard(
+                      title: item.title,
+                      description: item.description,
+                      onTap: () {},
+                    ),
+                  );
+                },
+              );
+            }
 
-              return EmptyStateFeedback(
-                  description:
-                      "Sem boards adicionados até o momento. Clique no botão abaixo para adicionar!");
-            },
-          ),
+            return EmptyStateFeedback(
+                description:
+                    "Sem boards adicionados até o momento. Clique no botão abaixo para adicionar!");
+          },
         ));
   }
 }
